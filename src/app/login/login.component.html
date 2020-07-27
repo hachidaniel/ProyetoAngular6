@@ -1,0 +1,50 @@
+
+  <div class="container">
+    <br>
+   <br>
+   <div class="row">
+     <div class="col-md-12 d-flex justify-content-center">
+   <div class=" centerLogin col-md-10">
+    <mat-card class="col-sm-8 col-8 col-md-5 col-xl-5 col-sm-4">
+      <mat-card-content>
+        <form [formGroup]="loginForm" (ngSubmit)="login(loginForm)">
+          <div class="form-group">
+            <mat-icon>email</mat-icon>&nbsp;&nbsp;
+            <mat-form-field>
+              <input matInput type="email" class="" autocomplete="off" id="email" placeholder="Enter email" name="email" formControlName="email">
+            <mat-error *ngIf="loginForm.get('email').hasError('required')">Campo requerido</mat-error>
+            <mat-error *ngIf="loginForm.get('email').hasError('email')">Email invalido</mat-error>
+            <mat-error *ngIf="loginForm.get('email').hasError('cannotContainSpace')">Email no debe contener espacios</mat-error>
+            </mat-form-field>
+          </div>
+          <div class="form-group">
+            <mat-icon>vpn_key</mat-icon>&nbsp;&nbsp;
+            <mat-form-field>
+              <input matInput type="password" class="" autocomplete="off" id="pwd" placeholder="Enter password" name="password" formControlName="password">
+              <mat-error *ngIf="loginForm.get('password').hasError('required')">Campo requerido</mat-error>
+              <mat-error *ngIf="loginForm.get('password').hasError('minlength')">La contraseña debe ser mayor que 1</mat-error>
+              <mat-error *ngIf="loginForm.get('password').hasError('maxlength')">La contraseña debe ser menor o igual a 50</mat-error>
+              <mat-error *ngIf="loginForm.get('password').hasError('cannotContainSpace')">password no debe contener espacios</mat-error>
+            </mat-form-field>
+          
+          </div>
+         <div *ngIf="loginError">
+            <p class="login-Error">{{loginForm}}</p>
+         </div>
+
+
+          <div class="form-group form-check">
+            <label class="form-check-label">
+              <input class="form-check-input" type="checkbox" name="remember"> Remember me
+            </label>
+          </div>
+          <button mat-raised-button type="submit" color="primary" [disabled]="loginForm.invalid">Login</button>
+        </form>
+      </mat-card-content>
+     
+    </mat-card>
+      </div>
+    </div>
+   </div>
+  </div>
+

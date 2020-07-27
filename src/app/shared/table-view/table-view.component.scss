@@ -1,0 +1,29 @@
+::ng-deep .ngx-datatable.ngx-table {
+    .datatable-header {
+        .datatable-header-cell {
+            background: #425563;
+            color: white;
+        }
+    }
+
+    .datatable-body .datatable-row-detail {
+        background-color: white !important ;
+        height: auto !important;
+        padding: 0 !important;
+        
+    }
+}
+
+::ng-deep.datatable-row-wrapper {
+    box-shadow: 0 1px 3px 0 rgba(0,0,0,0.12), 0 rgba(0,0,0,0.24);
+    position: relative;
+    top:3px;
+    border-bottom: 1px solid #000;
+}
+
+.table-results-base {
+    min-height: 0px;
+    position: relative;
+    padding-top: 1%;
+
+}

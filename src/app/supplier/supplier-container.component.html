@@ -1,0 +1,15 @@
+<div class="supplier-container">
+  <div class="search-supllier w-25 p-3">
+      <input  placeholder="Search" class="form-control"    type="search" [formControl]="searchControl">
+  </div>
+  <app-switch-view [templates]="templates" defaultTemplateKey="defaultTemplateKey" >
+  </app-switch-view>
+
+  <ng-template #cardViewTemplate>
+    <app-supplier-list-card [items]="items"></app-supplier-list-card>
+  </ng-template>
+
+  <ng-template #tableViewTemplate>
+     <app-supplier-list-table [items]="items"></app-supplier-list-table>
+  </ng-template>
+</div>
