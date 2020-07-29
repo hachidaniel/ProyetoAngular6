@@ -16,12 +16,13 @@ import { debounceTime, distinctUntilChanged, filter } from 'rxjs/operators';
 })
 export class SupplierContainerComponent implements OnInit, AfterViewInit {
 
-  items: Supplier[] = [];
+   items: Supplier[] = [];
    @ViewChild('cardViewTemplate') private cardViewTemplate: TemplateRef<any>;
    @ViewChild('tableViewTemplate') private tableViewTemplate: TemplateRef<any>;
    templates: Map<string, TemplateRef<any>> = new Map<string, TemplateRef<any>>();
    defaultTemplate: string;
    searchControl: FormControl = new FormControl();
+   isVisible = false;
 
   constructor(private service: SupplierService, private ref: ChangeDetectorRef) { }
 //filter(text => text.length >= 3),
@@ -36,9 +37,11 @@ export class SupplierContainerComponent implements OnInit, AfterViewInit {
   }
 
   getSuppliers(page: number, rows: number, searchTerm = '' ): void {
+    this.isVisible = true;
    this.service.getSupplierList(page, rows, searchTerm)
       .subscribe(response => {
          this.items = response;
+         this.isVisible = false;
       });
   }
 
